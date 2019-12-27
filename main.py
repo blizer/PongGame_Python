@@ -24,7 +24,7 @@ paddleB.rect.y = 200
 #This will be a list that will contain all the sprites we intend to use in our game.
 all_sprites_list = pygame.sprite.Group()
 
-# Add the paddles to the list of sprites
+# Add thepaddles to the list of sprites
 all_sprites_list.add(paddleA)
 all_sprites_list.add(paddleB)
 
@@ -42,7 +42,18 @@ while carryOn:
               carryOn = False # Flag that we are done so we exit this loop
         elif event.type==pygame.KEYDOWN:
                 if event.key==pygame.K_x: #Pressing the x Key will quit the game
-                     carryOn=False  
+                     carryOn=False
+ 
+    #Moving the paddles when the use uses the arrow keys (player A) or "W/S" keys (player B) 
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_w]:
+        paddleA.moveUp(5)
+    if keys[pygame.K_s]:
+        paddleA.moveDown(5)
+    if keys[pygame.K_UP]:
+        paddleB.moveUp(5)
+    if keys[pygame.K_DOWN]:
+        paddleB.moveDown(5)    
  
     # --- Game logic should go here
     all_sprites_list.update()
